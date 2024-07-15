@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-**Sim, confirmo que li o guia de [como contribuir](https://github.com/armadilha/functional-light-js/blob/main/CONTRIBUTING.md)** 🤓 _<fique à vontade para remover esta linha>_
+**Sim, confirmo que li o guia de [como contribuir](../../CONTRIBUTING.md)** 🤓 _<fique à vontade para remover esta linha>_
