@@ -1,13 +1,13 @@
 # Functional-Light JavaScript
-# Capítulo 9: List Operations
+# Capítulo 9: Operações de Lista
 
 > *Se você pode fazer algo incrível, continue fazendo isto repetidamente.*
 
-Nós já vimos várias breves referências antes neste texto para alguns utilitários que nós agora queremos dar um olhar mais de perto, nomeadamente `map(..)`, `filter(..), e `reduce(..)`. Em JavaScript, esses utilitários são tipicamente usados como métodos do protótipo de uma matriz (também conhecido como "lista"),
-We've already seen several brief references earlier in the text to some utilities that we now want to take a very close look at, namely `map(..)`, `filter(..)`, and `reduce(..)`. In JavaScript, these utilities are typically used as methods on the array (aka, "list") prototype, so we would naturally refer to them as array or list operations.
+Nós já vimos várias breves referências antes neste texto para alguns utilitários que nós agora queremos dar um olhar mais de perto, nomeadamente `map(..)`, `filter(..), e `reduce(..)`. Em JavaScript, esses utilitários são tipicamente usados como métodos no protótipo da matriz (também conhecido como "lista"), então nós poderíamos referir a elas como operações de matriz ou lista.
 
-Before we talk about the specific array methods, we want to examine conceptually what these operations are used for. It's equally important in this chapter that you understand *why* list operations are important as it is to understand *how* list operations work. Make sure you approach this chapter with that detail in mind.
+Antes de falarmos sobre métodos específicos da matriz, nós queremos examinar conceitualmente onde que estas operações são usadas. É igualmente importante neste capítulo que você compreenda *porque* operações de lista são importantes assim como compreender *como* as operações de lista funcionam. Certifique-se de abordar este capítulo com este detalhe em mente.
 
+A grande maioria das exibições comuns dessas operações, tanto fora deste livro e aqui neste capítulo, retratam tarefas triviais executadas em listas de valores (como duplicar cada número em uma matriz); é uma manei 
 The vast majority of common illustrations of these operations, both outside of this book and here in this chapter, depict trivial tasks performed on lists of values (like doubling each number in an array); it's a cheap and easy way to get the point across.
 
 But don't just gloss over these simple examples and miss the deeper point. Some of the most important FP value in understanding list operations comes from being able to model a sequence of tasks -- a series of statements that wouldn't otherwise *look* like a list -- as a list operation instead of performing them individually.
