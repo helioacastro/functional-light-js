@@ -3,7 +3,7 @@
 
 > *Se você pode fazer algo incrível, continue fazendo isto repetidamente.*
 
-Nós já vimos várias breves referências antes neste texto para alguns utilitários que nós agora queremos dar um olhar mais de perto, nomeadamente `map(..)`, `filter(..), e `reduce(..)`. Em JavaScript, esses utilitários são tipicamente usados como métodos no protótipo da matriz (também conhecido como "lista"), então nós poderíamos referir a elas como operações de matriz ou lista.
+Nós já vimos várias breves referências antes neste texto para alguns utilitários que nós agora queremos dar um olhar mais de perto, nomeadamente `map(..)`, `filter(..)`, e `reduce(..)`. Em JavaScript, esses utilitários são tipicamente usados como métodos no protótipo da matriz (também conhecido como "lista"), então nós poderíamos referir a elas como operações de matriz ou lista.
 
 Antes de falarmos sobre métodos específicos da matriz, nós queremos examinar conceitualmente onde que estas operações são usadas. É igualmente importante neste capítulo que você compreenda *porque* operações de lista são importantes assim como compreender *como* as operações de lista funcionam. Certifique-se de abordar este capítulo com este detalhe em mente.
 
