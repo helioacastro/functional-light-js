@@ -43,11 +43,6 @@ Mas o meu objetivo com o "_Functional-Light JavaScript_" é aplicar alguns princ
 * [Apêndice B: A humilde monada](manuscript/apB.md/#appendix-b-the-humble-monad)
 * [Apêndice C: Bibliotecas FP](manuscript/apC.md/#appendix-c-fp-libraries)
 
-## Tradução
-
-Este livro ainda está sendo traduzido para o português pelo fork do [ARMADILHA](https://github.com/armadilha/functional-light-js)!
-Para colaborar, você pode comentar em uma das "issues" de tradução e em seguida enviar o PR referenciando a issue.
-
 ## Publicação
 
 Esse livro foi publicado e está disponível para compra:
