@@ -39,9 +39,9 @@ Mas o meu objetivo com o "_Functional-Light JavaScript_" é aplicar alguns princ
 * [Capítulo 9: Operações Em Lista](manuscript/ch9.md/#chapter-9-list-operations)
 * [Capítulo 10: Async Funcional](manuscript/ch10.md/#chapter-10-functional-async)
 * [Capítulo 11: Juntando Tudo](manuscript/ch11.md/#chapter-11-putting-it-all-together)
-* [Appendix A: Transduzindo](manuscript/apA.md/#appendix-a-transducing)
-* [Appendix B: A humilde monada](manuscript/apB.md/#appendix-b-the-humble-monad)
-* [Appendix C: Bibliotecas FP](manuscript/apC.md/#appendix-c-fp-libraries)
+* [Apêndice A: Transduzindo](manuscript/apA.md/#appendix-a-transducing)
+* [Apêndice B: A humilde monada](manuscript/apB.md/#appendix-b-the-humble-monad)
+* [Apêndice C: Bibliotecas FP](manuscript/apC.md/#appendix-c-fp-libraries)
 
 ## Tradução
 
