@@ -8,15 +8,14 @@ Nós já vimos várias breves referências antes neste texto para alguns utilit�
 Antes de falarmos sobre métodos específicos da matriz, nós queremos examinar conceitualmente onde que estas operações são usadas. É igualmente importante neste capítulo que você compreenda *porque* operações de lista são importantes assim como compreender *como* as operações de lista funcionam. Certifique-se de abordar este capítulo com este detalhe em mente.
 
 A grande maioria das exibições comuns dessas operações, tanto fora deste livro e aqui neste capítulo, retratam tarefas triviais executadas em listas de valores (como duplicar cada número em uma matriz); é uma maneira fácil e barata de chegar a este ponto.  
-The vast majority of common illustrations of these operations, both outside of this book and here in this chapter, depict trivial tasks performed on lists of values (like doubling each number in an array); it's a cheap and easy way to get the point across.
 
-Mas não se deixe enganar com estes exemplos simples e perder conceito mais profundo. Alguns dos mais importantes valores FP na compreensão de operações de lista 
-But don't just gloss over these simple examples and miss the deeper point. Some of the most important FP value in understanding list operations comes from being able to model a sequence of tasks -- a series of statements that wouldn't otherwise *look* like a list -- as a list operation instead of performing them individually.
+Mas não se deixe enganar com estes exemplos simples e perder conceito mais profundo. Alguns dos mais importantes conceitos na Programação Funcional (FP) na compreensão de operações de lista vem da capacidade de modelar uma sequência de tarefas -- uma série de declarações que de outra forma não *pareceriam* uma lista -- como operações de lista ao invés de executá-las individualmente.
 
-This isn't just a trick to write more terse code. What we're after is to move from imperative to declarative style, to make the code patterns more readily recognizable and thus more readable.
+Este não é apenas um truque para escrever um código mais conciso. O que buscamos é passar do estilo imperativo para o estilo declarativo, tornar os padrões de código mais facilmente reconhecíveis e assim mais legíveis.
 
-But there's something **even more important to grasp**. With imperative code, each intermediate result in a set of calculations is stored in variable(s) through assignment. The more of these imperative patterns your code relies on, the harder it is to verify that there aren't mistakes -- in the logic, accidental mutation of values, or hidden side causes/effects lurking.
+Mas há algo **ainda mais importante de entender**. Com um código imperativo, cada resultado intermediário em uma série de cálculos ficam armazenados em variável(is) através de atribuição. Quanto mais desses padrões imperativos seu código depender, mais difícil é para verificar onde não tem erros -- na lógica, mudança acidental de valores, or causas/efeitos colaterais escondidos inesperados.
 
+Encadeano e/ou compondo operações de lista juntas, 
 By chaining and/or composing list operations together, the intermediate results are tracked implicitly and largely protected from these hazards.
 
 **Note:** More than previous chapters, to keep the many following code snippets as brief as possible, we'll rely heavily on the ES6 `=>` form. However, my [advice on `=>` from Chapter 2](ch2.md/#functions-without-function) still applies for general coding.
