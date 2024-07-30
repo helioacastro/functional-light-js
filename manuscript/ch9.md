@@ -15,21 +15,21 @@ Este não é apenas um truque para escrever um código mais conciso. O que busca
 
 Mas há algo **ainda mais importante de entender**. Com um código imperativo, cada resultado intermediário em uma série de cálculos ficam armazenados em variável(is) através de atribuição. Quanto mais desses padrões imperativos seu código depender, mais difícil é para verificar onde não tem erros -- na lógica, mudança acidental de valores, or causas/efeitos colaterais escondidos inesperados.
 
-Encadeano e/ou compondo operações de lista juntas, 
-By chaining and/or composing list operations together, the intermediate results are tracked implicitly and largely protected from these hazards.
+Ao encadear e/ou compondo operações de lista juntas, os resultados intermediários são rastreados implicitamente e protegidos amplamente destes riscos.
 
-**Note:** More than previous chapters, to keep the many following code snippets as brief as possible, we'll rely heavily on the ES6 `=>` form. However, my [advice on `=>` from Chapter 2](ch2.md/#functions-without-function) still applies for general coding.
+**Nota:** Mais do que nos capítulos anteriores, para manter os trechos de código a seguir tão concisos quanto possível, nós iremos contar fortemente com forma `=>` do ES6. Porém, meu [conselho em `=>` do Capítulo 2](ch2.md/#functions-without-function) também se aplica para programação em geral.
 
-## Non-FP List Processing
+## Processamento de Listas Non-FP (Programação não Funcional)
 
-As a quick preamble to our discussion in this chapter, I want to call out a few operations which may seem related to JavaScript arrays and FP list operations, but which aren't. These operations will not be covered here, because they are not consistent with general FP best practices:
+Como um rápido preâmbulo a nossa discussão, eu quero chamar algumas operações que podem ser relacionadas a matrizes em Javascript e operações de lista FP, mas que não são. Estas operações não irão ser abordadas aqui, porque elas não são consistentes em geral com as melhores práticas de Programação Funcional (FP):
 
 * `forEach(..)`
 * `some(..)`
 * `every(..)`
 
-`forEach(..)` is an iteration helper, but it's designed for each function call to operate with side effects; you can probably guess why that's not an endorsed FP list operation for our discussion!
+`forEach(..)` é um assistente para interação, mas foi projetado para que cada chamada de função opere com efeitos colaterais; você provavelmente pode imaginar porque esta não é uma operação de lista FP na nossa discussão!
 
+`some(..)` e `every(..)` encoraja o uso de funções do encourage the use of pure functions (specifically, predicate functions like `filter(..)` expects), but they inevitably reduce a list to a `true`/`false` result, essentially like a search or matching. These two utilities don't really fit the mold of how we want to model our code with FP, so we're going to skip covering them here.
 `some(..)` and `every(..)` do encourage the use of pure functions (specifically, predicate functions like `filter(..)` expects), but they inevitably reduce a list to a `true`/`false` result, essentially like a search or matching. These two utilities don't really fit the mold of how we want to model our code with FP, so we're going to skip covering them here.
 
 ## Map
