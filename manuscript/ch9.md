@@ -17,7 +17,7 @@ Mas há algo **ainda mais importante de entender**. Com um código imperativo, c
 
 Ao encadear e/ou compondo operações de lista juntas, os resultados intermediários são rastreados implicitamente e protegidos amplamente destes riscos.
 
-**Nota:** Mais do que nos capítulos anteriores, para manter os trechos de código a seguir tão concisos quanto possível, nós iremos contar fortemente com forma `=>` do ES6. Porém, meu [conselho em `=>` do Capítulo 2](ch2.md/#functions-without-function) também se aplica para programação em geral.
+**Nota:** Mais do que nos capítulos anteriores, para manter os trechos de código a seguir tão concisos quanto possível, nós iremos contar fortemente com forma `=>` do ES6. Porém, meu [conselho de `=>` do Capítulo 2](ch2.md/#functions-without-function) também se aplica para programação em geral.
 
 ## Processamento de Listas Non-FP (Programação não Funcional)
 
@@ -29,13 +29,13 @@ Como um rápido preâmbulo a nossa discussão, eu quero chamar algumas operaçõ
 
 `forEach(..)` é um assistente para interação, mas foi projetado para que cada chamada de função opere com efeitos colaterais; você provavelmente pode imaginar porque esta não é uma operação de lista FP na nossa discussão!
 
-`some(..)` e `every(..)` encoraja o uso de funções do encourage the use of pure functions (specifically, predicate functions like `filter(..)` expects), but they inevitably reduce a list to a `true`/`false` result, essentially like a search or matching. These two utilities don't really fit the mold of how we want to model our code with FP, so we're going to skip covering them here.
-`some(..)` and `every(..)` do encourage the use of pure functions (specifically, predicate functions like `filter(..)` expects), but they inevitably reduce a list to a `true`/`false` result, essentially like a search or matching. These two utilities don't really fit the mold of how we want to model our code with FP, so we're going to skip covering them here.
+`some(..)` e `every(..)` encoraja o uso de funções puras (especificamente, como esperado nas funções de predicado `filter(..)`), mas inevitavelmente reduzem a lista para um resultado de `verdadeiro`/`falso`, essencialmente como uma busca ou correspondência. Esses dois utilitários realmente não se encaixam no molde de como queremos nosso código com Programação Funcional (FP), então nós iremos pular a explicação deles aqui. 
 
 ## Map
 
-We'll start our exploration of FP list operations with one of the most basic and fundamental: `map(..)`.
+Nós iremos começar nossa exploração de Operações de Listas com Programação Funcional (FP) com o mais básico e fundamental:  `map(..)`.
 
+Um mapeamento é uma transformação de um valor para outro valor. Por exemplo, se você começa com o número `2` e você multiplica ele por `3`, você mapeou ele para `6`. É importante notar que nós não estamos falando sobre a transformação do mapeamento 
 A mapping is a transformation from one value to another value. For example, if you start with the number `2` and you multiply it by `3`, you have mapped it to `6`. It's important to note that we're not talking about mapping transformation as implying *in-place* mutation or reassignment; instead, we're looking at how mapping transformation projects a new value from one location to the other.
 
 In other words:
