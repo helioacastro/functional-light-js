@@ -35,32 +35,32 @@ Como um rápido preâmbulo a nossa discussão, eu quero chamar algumas operaçõ
 
 Nós iremos começar nossa exploração de Operações de Listas com Programação Funcional (FP) com o mais básico e fundamental:  `map(..)`.
 
-Um mapeamento é uma transformação de um valor para outro valor. Por exemplo, se você começa com o número `2` e você multiplica ele por `3`, você mapeou ele para `6`. É importante notar que nós não estamos falando sobre a transformação do mapeamento 
-A mapping is a transformation from one value to another value. For example, if you start with the number `2` and you multiply it by `3`, you have mapped it to `6`. It's important to note that we're not talking about mapping transformation as implying *in-place* mutation or reassignment; instead, we're looking at how mapping transformation projects a new value from one location to the other.
+Um mapeamento é uma transformação de um valor para outro valor. Por exemplo, se você começa com o número `2` e você multiplica ele por `3`, você mapeou ele para `6`. É importante notar que nós não estamos falando sobre a transformação do mapeamento como implica a mutação ou reatribuição *in-loco*; ao invés disso, nós estamos focando em como a transformação de mapeamento projeta um novo valor de um local para outro.
 
-In other words:
+Em outras palavras:
 
 ```js
 var x = 2, y;
 
-// transformation / projection
+// transformação / projeção
 y = x * 3;
 
-// mutation / reassignment
+// mutação / reatribuição
 x = x * 3;
 ```
 
-If we define a function for this multiplying by `3`, that function acts as a mapping (transformer) function:
+Se nós definimos uma função para isto multiplicando por `3`, esta função atua com uma função de mapeamento (transformadora):
 
 ```js
-var multipleBy3 = v => v * 3;
+var multiplicaPor3 = v => v * 3;
 
 var x = 2, y;
 
-// transformation / projection
-y = multiplyBy3( x );
+// transformação / projeção
+y = multiplicaPor3( x );
 ```
 
+Nós podemos naturamente estender o mapeamento de uma simples transformação de valores para uma coleção de valores. `map(..)` é uma operação que transforma todos os valores de uma lista que os projeta para uma nova lista:
 We can naturally extend mapping from a single value transformation to a collection of values. `map(..)` is an operation that transforms all the values of a list as it projects them to a new list:
 
 <p align="center">
