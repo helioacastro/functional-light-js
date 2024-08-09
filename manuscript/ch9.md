@@ -95,31 +95,30 @@ map( ["1","2","3"], unary( parseInt ) );
 // [1,2,3]
 ```
 
-**Nota:** As operações de protótipos de matrizes do JavaScript (`map(..)`, `filter(..)`, e `reduce(..)`) todos aceitam um argumento opcional final para usar `esta` conexão da função.
-**Note:** The JavaScript array prototype operations (`map(..)`, `filter(..)`, and `reduce(..)`) all accept an optional last argument to use for `this` binding of the function. As we discussed in [Chapter 2, "What's This?"](ch2.md/#whats-this), `this`-based coding should generally be avoided wherever possible in terms of being consistent with the best practices of FP. As such, our example implementations in this chapter do not support such a `this`-binding feature.
+**Nota:** As operações de protótipos de matrizes do JavaScript (`map(..)`, `filter(..)`, e `reduce(..)`) todas aceitam um argumento opcional final para ser utilizado na ligação `this` da função. Como nós discutimos no [Capítulo 2, "O que é isto?"](ch2.md/#whats-this), a codificação baseada em `this` deve ser evitada sempre que possível em termos de ser consistente com as melhores práticas de FP. Como tal, nossas implementações de exemplo neste capítulo não suportam tal característica de ligação `this`.
 
-Beyond the obvious numeric or string operations you could perform against a list of those respective value types, here are some other examples of mapping operations. We can use `map(..)` to transform a list of functions into a list of their return values:
+Além das óbvias operações matemáticas ou de strings que podem ser executadas contra uma lista desses respectivos tipos de valores, aqui estão outros exemplos de operações de mapeamento. Podemos usar `map(..)` para transformar uma lista de funções numa lista dos seus valores de retorno:
 
 ```js
-var one = () => 1;
-var two = () => 2;
-var three = () => 3;
+var um = () => 1;
+var dois = () => 2;
+var tres = () => 3;
 
-[one,two,three].map( fn => fn() );
+[um,dois,tres].map( fn => fn() );
 // [1,2,3]
 ```
 
-Or we can first transform a list of functions by composing each of them with another function, and then execute them:
+Ou podemos primeiro transformar uma lista de funções compondo cada uma delas em uma outra função, e então executá-las.
 
 ```js
-var increment = v => ++v;
-var decrement = v => --v;
-var square = v => v * v;
+var incremento = v => ++v;
+var decremento = v => --v;
+var aoquadrado = v => v * v;
 
-var double = v => v * 2;
+var dobro = v => v * 2;
 
-[increment,decrement,square]
-.map( fn => compose( fn, double ) )
+[incremento,decremento,aoquadrado]
+.map( fn => compose( fn, dobro ) )
 .map( fn => fn( 3 ) );
 // [7,5,36]
 ```
