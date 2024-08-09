@@ -15,7 +15,7 @@ Este não é apenas um truque para escrever um código mais conciso. O que busca
 
 Mas há algo **ainda mais importante de entender**. Com um código imperativo, cada resultado intermediário em uma série de cálculos ficam armazenados em variável(is) através de atribuição. Quanto mais desses padrões imperativos seu código depender, mais difícil é para verificar onde não tem erros -- na lógica, mudança acidental de valores, or causas/efeitos colaterais escondidos inesperados.
 
-Ao encadear e/ou compondo operações de lista juntas, os resultados intermediários são rastreados implicitamente e protegidos amplamente destes riscos.
+Ao encadear e/ou compondo operações de lista conjuntamente, os resultados intermediários são rastreados implicitamente e protegidos amplamente destes riscos.
 
 **Nota:** Mais do que nos capítulos anteriores, para manter os trechos de código a seguir tão concisos quanto possível, nós iremos contar fortemente com forma `=>` do ES6. Porém, meu [conselho de `=>` do Capítulo 2](ch2.md/#functions-without-function) também se aplica para programação em geral.
 
@@ -35,67 +35,67 @@ Como um rápido preâmbulo a nossa discussão, eu quero chamar algumas operaçõ
 
 Nós iremos começar nossa exploração de Operações de Listas com Programação Funcional (FP) com o mais básico e fundamental:  `map(..)`.
 
-Um mapeamento é uma transformação de um valor para outro valor. Por exemplo, se você começa com o número `2` e você multiplica ele por `3`, você mapeou ele para `6`. É importante notar que nós não estamos falando sobre a transformação do mapeamento 
-A mapping is a transformation from one value to another value. For example, if you start with the number `2` and you multiply it by `3`, you have mapped it to `6`. It's important to note that we're not talking about mapping transformation as implying *in-place* mutation or reassignment; instead, we're looking at how mapping transformation projects a new value from one location to the other.
+Um mapeamento é uma transformação de um valor para outro valor. Por exemplo, se você começa com o número `2` e você multiplica ele por `3`, você mapeou ele para `6`. É importante notar que nós não estamos falando sobre a transformação do mapeamento como implica a mutação ou reatribuição *in-loco*; ao invés disso, nós estamos focando em como a transformação de mapeamento projeta um novo valor de um local para outro.
 
-In other words:
+Em outras palavras:
 
 ```js
 var x = 2, y;
 
-// transformation / projection
+// transformação / projeção
 y = x * 3;
 
-// mutation / reassignment
+// mutação / reatribuição
 x = x * 3;
 ```
 
-If we define a function for this multiplying by `3`, that function acts as a mapping (transformer) function:
+Se nós definimos uma função para isto multiplicando por `3`, esta função atua com uma função de mapeamento (transformadora):
 
 ```js
-var multipleBy3 = v => v * 3;
+var multiplicaPor3 = v => v * 3;
 
 var x = 2, y;
 
-// transformation / projection
-y = multiplyBy3( x );
+// transformação / projeção
+y = multiplicaPor3( x );
 ```
 
-We can naturally extend mapping from a single value transformation to a collection of values. `map(..)` is an operation that transforms all the values of a list as it projects them to a new list:
+Nós podemos naturamente ampliar o mapeamento de uma simples transformação de valores para uma coleção de valores. `map(..)` é uma operação que transforma todos os valores de uma lista e os projetam para uma nova lista:
 
 <p align="center">
     <img src="images/fig9.png" width="50%">
 </p>
 
-To implement `map(..)`:
+Para implementar `map(..)`:
 
 ```js
-function map(mapperFn,arr) {
-    var newList = [];
+function map(mapearFunc, lista) {
+    var novaLista = [];
 
-    for (let [idx,v] of arr.entries()) {
-        newList.push(
-            mapperFn( v, idx, arr )
+    for (let [idx,v] of lista.entries()) {
+        novaLista.push(
+            mapearFunc( v, idx, lista )
         );
     }
 
-    return newList;
+    return novaLista;
 }
 ```
 
-**Note:** The parameter order `mapperFn, arr` may feel backwards at first, but this convention is much more common in FP libraries because it makes these utilities easier to compose (with currying).
+**Nota:** O ordem do parâmetro `mapearFunc, lista` pode parecer um retrocesso a princípio, mas esta convenção é bastante comum em bibliotecas FP porque isto torna os utilitários mais fáceis para compor (com currying).
 
-The `mapperFn(..)` is naturally passed the list item to map/transform, but also an `idx` and `arr`. We're doing that to keep consistency with the built-in array `map(..)`. These extra pieces of information can be very useful in some cases.
+A `mapearFunc(..)` é naturalmente passada a lista de itens para mapear/transformar, mas também um `idx` e `lista`. Nós faremos isto para manter consistência com a matriz incorporada em `map(..)`. Estas partes extras de informação podem ser úteis em alguns casos.
 
-But in other cases, you may want to use a `mapperFn(..)` that only the list item should be passed to, because the extra arguments might change its behavior. In [Chapter 3, "All For One"](ch3.md/#all-for-one), we introduced `unary(..)`, which limits a function to only accept a single argument (no matter how many are passed).
+Mas em outros casos, você pode querer usar a `mapearFunc(..)` onde somente a lista de itens seria passada, porque os argumentos extras podem alterar o seu comportamento.  No [Capítulo 3, "Todos por um"](ch3.md/#all-for-one), nós introduzimos `unary(..)`, que limita a função para somente aceitar um argumento simples (não importa quantos são passados).
 
-Recall [the example from Chapter 3](ch3.md/#user-content-mapunary) about limiting `parseInt(..)` to a single argument to be used safely as a `mapperFn(..)`, which we can also utilize with the standalone `map(..)`:
+Lembre [o exemplo do Capítulo 3](ch3.md/#user-content-mapunary) sobre limitação do `parseInt(..)` que para um argumento simples ser usado seguramente como um `mapearFunc(..)`, nós podemos também utilizar o `map(..)` isoladamente:
 
 ```js
 map( ["1","2","3"], unary( parseInt ) );
 // [1,2,3]
 ```
 
+**Nota:** As operações de protótipos de matrizes do JavaScript (`map(..)`, `filter(..)`, e `reduce(..)`) todos aceitam um argumento opcional final para usar `esta` conexão da função.
 **Note:** The JavaScript array prototype operations (`map(..)`, `filter(..)`, and `reduce(..)`) all accept an optional last argument to use for `this` binding of the function. As we discussed in [Chapter 2, "What's This?"](ch2.md/#whats-this), `this`-based coding should generally be avoided wherever possible in terms of being consistent with the best practices of FP. As such, our example implementations in this chapter do not support such a `this`-binding feature.
 
 Beyond the obvious numeric or string operations you could perform against a list of those respective value types, here are some other examples of mapping operations. We can use `map(..)` to transform a list of functions into a list of their return values:
