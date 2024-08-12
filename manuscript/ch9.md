@@ -125,7 +125,7 @@ var dobro = v => v * 2;
 
 Algo interessante a observar sobre `map(..)`: normalmente assumimos que a lista é processada da esquerda para direita, mas não há nada no conceito de `map(..)` que realmente exija isto. Cada transformação é supostamente para ser independente de qualquer outra transformação.
 
-Mapeamento em um sentido geral até poderia ser em paralelo em um ambiente que suporta isso, o que para uma lista grande poderia drasticamente melhorar drasticamente o desempenho. Não vemos o Javascript realmente fazendo isso porque não há nada que exija que você passe uma função pura como `mapearFunc(..)`, mesmo que você **realmente precise**. Se você passar uma função impura e o JS for executar chamadas diferentes em ordens diferentes, isto poderia rapidamente causar estragos. 
+Mapeamento em um sentido geral até poderia ser em paralelo em um ambiente que suporta isso, o que para uma lista grande poderia melhorar drasticamente o desempenho. Não vemos o Javascript realmente fazendo isso porque não há nada que exija que você passe uma função pura como `mapearFunc(..)`, mesmo que você **realmente precise**. Se você passar uma função impura e o JS for executar chamadas diferentes em ordens diferentes, isto poderia rapidamente causar estragos. 
 
 Mesmo teoricamente, operações individuais de mapeamento são independentes, JS deve assumir que eles não o são. Isto é um problema.
 
