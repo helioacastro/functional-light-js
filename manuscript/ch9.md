@@ -13,7 +13,7 @@ Mas não se deixe enganar com estes exemplos simples e perder conceito mais prof
 
 Este não é apenas um truque para escrever um código mais conciso. O que buscamos é passar do estilo imperativo para o estilo declarativo, tornar os padrões de código mais facilmente reconhecíveis e assim mais legíveis.
 
-Mas há algo **ainda mais importante de entender**. Com um código imperativo, cada resultado intermediário em uma série de cálculos ficam armazenados em variável(is) através de atribuição. Quanto mais desses padrões imperativos seu código depender, mais difícil é para verificar onde não tem erros -- na lógica, mudança acidental de valores, or causas/efeitos colaterais escondidos inesperados.
+Mas há algo **ainda mais importante de entender**. Com um código imperativo, cada resultado intermediário em uma série de cálculos ficam armazenados em(ns) variável(is) através de atribuição. Quanto mais desses padrões imperativos seu código depender, mais difícil é para verificar onde não tem erros -- na lógica, mudança acidental de valores, or causas/efeitos secundários escondidos inesperados.
 
 Ao encadear e/ou compondo operações de lista conjuntamente, os resultados intermediários são rastreados implicitamente e protegidos amplamente destes riscos.
 
@@ -27,7 +27,7 @@ Como um rápido preâmbulo a nossa discussão, eu quero chamar algumas operaçõ
 * `some(..)`
 * `every(..)`
 
-`forEach(..)` é um assistente para interação, mas foi projetado para que cada chamada de função opere com efeitos colaterais; você provavelmente pode imaginar porque esta não é uma operação de lista FP na nossa discussão!
+`forEach(..)` é um assistente para interação, mas foi projetado para que cada chamada de função opere com efeitos secundários; você provavelmente pode imaginar porque esta não é uma operação de lista FP na nossa discussão!
 
 `some(..)` e `every(..)` encoraja o uso de funções puras (especificamente, como esperado nas funções de predicado `filter(..)`), mas inevitavelmente reduzem a lista para um resultado de `verdadeiro`/`falso`, essencialmente como uma busca ou correspondência. Esses dois utilitários realmente não se encaixam no molde de como queremos nosso código com Programação Funcional (FP), então nós iremos pular a explicação deles aqui. 
 
@@ -131,7 +131,7 @@ Mesmo teoricamente, operações individuais de mapeamento são independentes, JS
 
 ### Síncrono versus Assíncrono 
 
-A lista do operações que nós discutimos neste capítulo operam todas sincronicamente em uma lista de valores que já estão presentes; `map(..)` tal como concebido aqui, é uma operação `eager`. Mas outra forma de pensar na função de mapeamento é como um manipulador de eventos que é invocado para cada novo valor encontrado na lista.
+A lista de operações que nós discutimos neste capítulo operam todas sincronicamente em uma lista de valores que já estão presentes; `map(..)` tal como concebido aqui, é uma operação `eager`. Mas outra forma de pensar na função de mapeamento é como um manipulador de eventos que é invocado para cada novo valor encontrado na lista.
 
 Imagine um cenário fictício como este:
 
@@ -142,26 +142,25 @@ matriz.addEventListener( "value", multiplicaPor3 );
 ```
 Agora, sempre que um valor é adicionado a `matriz`, o manipulador de eventos `multiplicaPor3` -- função de mapeamento -- é chamada com um valor, e esta transformação é adicionada a `novaMatriz`.
 
-What we're hinting at is that arrays, and the array operations we perform on them, are the eager synchronous versions, whereas these same operations can also be modeled on a "lazy list" (aka, stream) that receives its values over time. We'll dive into this topic in [Chapter 10](ch10.md).
+O que estamos sugerindo é que as matrizes, e as operações de matrizes que executamos nas mesmas, são as versões síncronas (eager), enquanto estas mesmas operações também podem ser modeladas como uma lista `lazy` (também conhecida como `stream`) que recebe os seus valores ao longo do tempo. Iremos aprofundar este tópico no [Capítulo 10](ch10.md).
 
-### Mapping vs. Eaching
+### Mapeamento versus Iteração
 
-Some advocate using `map(..)` as a general form of `forEach(..)`-iteration, where essentially the value received is passed through untouched, but then some side effect can be performed:
+Alguns defendem o uso de `map(..)` como uma forma geral de iteração `forEach(...)`, onde essencialmente o valor recebido é passado inalterado, mas depois algum efeito secundário pode ser realizado:
 
 ```js
 [1,2,3,4,5]
-.map( function mapperFn(v){
-    console.log( v );           // side effect!
+.map( function mapearFunc(v){
+    console.log( v );           // efeito secundário!
     return v;
 } )
 ..
 ```
+A razão pela qual esta técnica pode parecer útil é que o `map(..)` retorna uma matriz para que você possa continuar encadeando mais operações depois; o valor de retorno de `forEach(..)` é `indefinido`. No entanto, deve-se evitar usar `map(..)` desta forma, porque é confuso utilizar uma operação típica FP de uma forma decididamente não-FP.
 
-The reason this technique can seem useful is that the `map(..)` returns the array so you can keep chaining more operations after it; the return value of `forEach(..)` is `undefined`. However, I think you should avoid using `map(..)` in this way, because it's a net confusion to use a core FP operation in a decidedly un-FP way.
+Já ouviu o velho ditado sobre a utilização da ferramenta certa para o trabalho certo, não é mesmo? O martelo para um prego, a chave de fendas para um parafuso... Isto é ligeiramente diferente: é utilizar a ferramenta certa *da forma certa*.
 
-You've heard the old adage about using the right tool for the right job, right? Hammer for a nail, screwdriver for a screw... This is slightly different: it's use the right tool *in the right way*.
-
-A hammer is meant to be held in your hand; if you instead hold it in your mouth and try to hammer the nail, you're not gonna be very effective. `map(..)` is intended to map values, not create side effects.
+Um martelo é para ser segurado na mão; se em vez disso o segurar na boca e tentar martelar o prego, não vai ser muito eficaz. `map(...)` tem como objetivo mapear valores, não criar efeitos secundários.
 
 ### A Word: Functors
 
