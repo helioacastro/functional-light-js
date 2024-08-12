@@ -131,7 +131,7 @@ Mesmo teoricamente, operações individuais de mapeamento são independentes, JS
 
 ### Síncrono versus Assíncrono 
 
-A lista do operações que nós discutimos neste capítulo operam todas sincronicamente em uma lista de valores que já estão presentes; `map(..)` tal como concebido aqui, é uma operação que requer esforço. Mas outra forma de pensar na função de mapeamento é como um manipulador de eventos que é invocado para cada novo valor encontrado na lista.
+A lista do operações que nós discutimos neste capítulo operam todas sincronicamente em uma lista de valores que já estão presentes; `map(..)` tal como concebido aqui, é uma operação `eager`. Mas outra forma de pensar na função de mapeamento é como um manipulador de eventos que é invocado para cada novo valor encontrado na lista.
 
 Imagine um cenário fictício como este:
 
