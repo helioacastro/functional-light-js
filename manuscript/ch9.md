@@ -123,25 +123,24 @@ var dobro = v => v * 2;
 // [7,5,36]
 ```
 
-Something interesting to observe about `map(..)`: we typically would assume that the list is processed left-to-right, but there's nothing about the concept of `map(..)` that really requires that. Each transformation is supposed to be independent of every other transformation.
+Algo interessante a observar sobre `map(..)`: normalmente assumimos que a lista é processada da esquerda para direita, mas não há nada no conceito de `map(..)` que realmente exija isto. Cada transformação é supostamente para ser independente de qualquer outra transformação.
 
-Mapping in a general sense could even been parallelized in an environment that supports that, which for a large list could drastically improve performance. We don't see JavaScript actually doing that because there's nothing that requires you to pass a pure function as `mapperFn(..)`, even though you **really ought to**. If you were to pass an impure function and JS were to run different calls in different orders, it would quickly cause havoc.
+Mapeamento em um sentido geral até poderia ser em paralelo em um ambiente que suporta isso, o que para uma lista grande poderia drasticamente melhorar drasticamente o desempenho. Não vemos o Javascript realmente fazendo isso porque não há nada que exija que você passe uma função pura como `mapearFunc(..)`, mesmo que você **realmente precise**. Se você passar uma função impura e o JS for executar chamadas diferentes em ordens diferentes, isto poderia rapidamente causar estragos. 
 
-Even though theoretically, individual mapping operations are independent, JS has to assume that they're not. That's a bummer.
+Mesmo teoricamente, operações individuais de mapeamento são independentes, JS deve assumir que eles não o são. Isto é um problema.
 
-### Sync vs. Async
+### Síncrono versus Assíncrono 
 
-The list operations we're discussing in this chapter all operate synchronously on a list of values that are all already present; `map(..)` as conceived here is an eager operation. But another way of thinking about the mapper function is as an event handler which is invoked for each new value encountered in the list.
+A lista do operações que nós discutimos neste capítulo operam todas sincronicamente em uma lista de valores que já estão presentes; `map(..)` tal como concebido aqui, é uma operação que requer esforço. Mas outra forma de pensar na função de mapeamento é como um manipulador de eventos que é invocado para cada novo valor encontrado na lista.
 
-Imagine something fictional like this:
+Imagine um cenário fictício como este:
 
 ```js
-var newArr = arr.map();
+var novaMatriz = matriz.map();
 
-arr.addEventListener( "value", multiplyBy3 );
+matriz.addEventListener( "value", multiplicaPor3 );
 ```
-
-Now, any time a value is added to `arr`, the `multiplyBy3(..)` event handler -- mapper function -- is called with the value, and its transformation is added to `newArr`.
+Agora, sempre que um valor é adicionado a `matriz`, o manipulador de eventos `multiplicaPor3` -- função de mapeamento -- é chamada com um valor, e esta transformação é adicionada a `novaMatriz`.
 
 What we're hinting at is that arrays, and the array operations we perform on them, are the eager synchronous versions, whereas these same operations can also be modeled on a "lazy list" (aka, stream) that receives its values over time. We'll dive into this topic in [Chapter 10](ch10.md).
 
