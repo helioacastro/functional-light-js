@@ -163,10 +163,11 @@ Já ouviu o velho ditado sobre a utilização da ferramenta certa para o trabalh
 Um martelo é para ser segurado na mão; se em vez disso o segurar na boca e tentar martelar o prego, não vai ser muito eficaz. `map(...)` tem como objetivo mapear valores, não criar efeitos secundários.
 
 ### A Word: Functors
+### Uma palavra: Functors
 
-We've mostly tried to stay away from invented terminology in FP as much as possible in this book. We have used official terms at times, but mostly when we can derive some sense of meaning from them in regular everyday conversation.
+Tentamos na maioria das vezes afastar-nos da terminologia criada no âmbito da FP, o máximo possível, neste livro. Por vezes, utilizamos termos oficiais, mas em geral quando conseguimos obter algum sentido deles numa conversa normal do dia a dia.
 
-I'm going to very briefly break that pattern and use a word that might be a little intimidating: functor. The reason I want to talk about functors here is because we now already understand what they do, and because that term is used heavily throughout the rest of FP literature; indeed, functors are foundational ideas in FP that come straight from the mathematical principles (category theory). You being at least familiar with and not scared by this term will be beneficial.
+Vou quebrar muito brevemente esse padrão e usar uma palavra que pode ser um pouco intimidante: functor. A razão pela qual eu quero falar sobre functors aqui é porque agora já entendemos o que eles fazem, e porque esse termo é usado fortemente em todo o resto da literatura de FP; na verdade, os functors são ideias fundamentais na Programaçã Funcional (FP) que vêm diretamente dos princípios matemáticos (teoria das categorias).  O fato de estar pelo menos familiarizado com este termo, e não assustado com ele, será benéfico.
 
 A functor is a value that has a utility for using an operator function on that value, which preserves composition.
 
